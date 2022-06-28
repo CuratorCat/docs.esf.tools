@@ -1,54 +1,65 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const lightCodeTheme = require("prism-react-renderer/themes/github");
+const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
-  url: 'https://your-docusaurus-test-site.com',
-  baseUrl: '/',
-  onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
+  title: "ESF Docs",
+  tagline: "ENS Subdomain Factory Documentation",
+  url: "https://docs.esf.tools",
+  baseUrl: "/",
+  onBrokenLinks: "throw",
+  onBrokenMarkdownLinks: "warn",
+  favicon: "img/favicon.ico",
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: "esf", // Usually your GitHub org/user name.
+  projectName: "docs.esf.tools", // Usually your repo name.
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
+    defaultLocale: "en",
+    locales: ["en"],
   },
 
   presets: [
     [
-      'classic',
+      "classic",
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          sidebarPath: require.resolve('./sidebars.js'),
+          sidebarPath: require.resolve("./sidebars.js"),
+          routeBasePath: "/",
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          // editUrl: "https://github.com/username/repo-name/tree/main/",
+          showLastUpdateAuthor: true,
+          showLastUpdateTime: true,
         },
         blog: {
+          blogTitle: "Blog",
+          path: "blog",
+          blogDescription: "ESF Blog",
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          // editUrl: "https://github.com/username/repo-name/tree/main/",
+          postsPerPage: 15,
+          blogSidebarCount: 10,
         },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: require.resolve("./src/css/custom.css"),
         },
+        /** Google Analytics **/
+        // googleAnalytics: {
+        //   trackingID: 'UA-123456789-1',
+        //   anonymizeIP: true,
+        // },
       }),
     ],
   ],
@@ -57,76 +68,118 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'My Site',
+        title: "ESF Docs",
         logo: {
-          alt: 'My Site Logo',
-          src: 'img/logo.svg',
+          alt: "ESF Logo",
+          src: "img/logo_navbar.png",
         },
         items: [
           {
-            type: 'doc',
-            docId: 'intro',
-            position: 'left',
-            label: 'Tutorial',
+            to: "/guides",
+            position: "left",
+            label: "Guides",
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/facebook/docusaurus',
-            label: 'GitHub',
-            position: 'right',
+            to: "/developers",
+            position: "left",
+            label: "Developers",
+          },
+          {
+            to: "/about",
+            position: "left",
+            label: "About",
+          },
+          { to: "/blog", label: "Blog", position: "right" },
+          {
+            href: "https://esf.tools/",
+            label: "ESF App",
+            position: "right",
           },
         ],
       },
       footer: {
-        style: 'dark',
+        style: "dark",
         links: [
           {
-            title: 'Docs',
+            title: "Docs",
             items: [
               {
-                label: 'Tutorial',
-                to: '/docs/intro',
+                label: "Guides",
+                to: "/guides",
+              },
+              {
+                label: "Developers",
+                to: "/developers",
+              },
+              {
+                label: "FAQs",
+                to: "/guides/faqs",
               },
             ],
           },
           {
-            title: 'Community',
+            title: "Community",
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+                label: "Discord",
+                href: "https://discord.gg/zVA8GeGRAp",
               },
               {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
+                label: "Twitter",
+                href: "https://twitter.com/esf_eth",
               },
             ],
           },
           {
-            title: 'More',
+            title: "More",
             items: [
               {
-                label: 'Blog',
-                to: '/blog',
+                label: "Blog",
+                to: "/blog",
               },
               {
-                label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                label: "About",
+                to: "/about",
+              },
+              {
+                label: "Team",
+                to: "/about/team",
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `© ${new Date().getFullYear()} ESF Docs. Built with Docusaurus.`,
       },
+      image: "img/logo.png",
+      metadata: [{ name: "twitter:card", content: "summary" }],
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
     }),
+
+  plugins: [
+    [
+      require.resolve("@cmfcmf/docusaurus-search-local"),
+      {
+        indexDocs: true,
+        indexDocSidebarParentCategories: 3,
+        indexBlog: true,
+        indexPages: true,
+        language: ["en"],
+        style: undefined,
+        lunr: {
+          tokenizerSeparator: /[\s\-]+/,
+          // https://lunrjs.com/guides/customising.html#similarity-tuning
+          b: 0.75,
+          k1: 1.2,
+          titleBoost: 5,
+          contentBoost: 1,
+          parentCategoriesBoost: 2,
+        },
+      },
+    ],
+  ],
 };
 
 module.exports = config;
