@@ -1,8 +1,42 @@
 .features {
   display: flex;
   align-items: center;
-  padding: 2rem 0;
+  padding: 0;
   width: 100%;
+}
+
+.featureItemLink {
+  text-decoration: none !important;
+}
+
+.featureItem {
+  background: rgba(0,0,0,0.075);
+  border-radius: 2rem;
+  padding: 3rem 2rem;
+  margin-bottom: 2rem;
+  font-size: large;
+}
+
+.featureIcon {
+  font-size: 5rem;
+  margin: 0;
+}
+
+.featureItem:hover {
+  background: rgba(0,0,0,0.1);
+}
+
+.featureItem h3 {
+  font-size: x-large;
+  text-transform: uppercase;
+}
+
+.featureItem:hover h3 {
+  text-decoration: underline;
+}
+
+.featureItem > div > div > span {
+  color: var(--ifm-font-color-base);
 }
 
 .featureSvg {
